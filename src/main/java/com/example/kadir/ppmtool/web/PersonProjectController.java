@@ -34,4 +34,10 @@ public class PersonProjectController {
         return new ResponseEntity<PersonProject>(personProject1, HttpStatus.CREATED);
     }
 
+    @GetMapping("/{personProjectId}")
+    public ResponseEntity<?> getProjectById(@PathVariable String personProjectId)
+    {
+        PersonProject personProject= personProjectService.getPersonProjectById(personProjectId);
+        return new ResponseEntity<PersonProject>(personProject,HttpStatus.OK);
+    }
 }

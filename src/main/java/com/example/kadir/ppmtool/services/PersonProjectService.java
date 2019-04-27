@@ -5,4 +5,6 @@ import com.example.kadir.ppmtool.domain.PersonProject;
 public interface PersonProjectService {
 
     public PersonProject saveOrUpdatePersonProject(PersonProject personProject);
+
+    public PersonProject getPersonProjectById(String personProjectIdentifier);
 }

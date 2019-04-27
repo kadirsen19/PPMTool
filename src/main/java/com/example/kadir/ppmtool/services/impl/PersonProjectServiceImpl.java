@@ -21,8 +21,13 @@ public class PersonProjectServiceImpl implements PersonProjectService {
             return personProjectRepository.save(personProject);
         }catch (Exception ex){
             throw new PersonProjectIdException("PersonProject identifier '"+personProject.getProjectIdentifier().
-                    toUpperCase()+"'already exist");
+                    toUpperCase()+" 'already exist");
         }
 
+    }
+
+    @Override
+    public PersonProject getPersonProjectById(String personProjectIdentifier) {
+        return personProjectRepository.findPersonProjectByProjectIdentifier(personProjectIdentifier);
     }
 }

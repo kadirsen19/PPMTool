@@ -10,4 +10,6 @@ public interface PersonProjectRepository extends CrudRepository<PersonProject,Lo
     @Override
     Iterable<PersonProject> findAllById(Iterable<Long> ids);
 
+    PersonProject findPersonProjectByProjectIdentifier(String personProjectIdentifier);
+
 }
