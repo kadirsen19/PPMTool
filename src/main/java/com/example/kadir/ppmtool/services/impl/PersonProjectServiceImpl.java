@@ -28,6 +28,12 @@ public class PersonProjectServiceImpl implements PersonProjectService {
 
     @Override
     public PersonProject getPersonProjectById(String personProjectIdentifier) {
+        PersonProject personProject = personProjectRepository.findPersonProjectByProjectIdentifier(personProjectIdentifier);
+
+        if(personProject == null){
+            throw new PersonProjectIdException("Person Project Id '"+personProjectIdentifier+"' does not exist");
+        }
+
         return personProjectRepository.findPersonProjectByProjectIdentifier(personProjectIdentifier);
     }
 }
