@@ -12,4 +12,6 @@ public interface PersonProjectRepository extends CrudRepository<PersonProject,Lo
 
     PersonProject findPersonProjectByProjectIdentifier(String personProjectIdentifier);
 
+    @Override
+    Iterable<PersonProject> findAll();
 }

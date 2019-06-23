@@ -7,6 +7,8 @@ import com.example.kadir.ppmtool.services.PersonProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PersonProjectServiceImpl implements PersonProjectService {
 
@@ -35,5 +37,20 @@ public class PersonProjectServiceImpl implements PersonProjectService {
         }
 
         return personProjectRepository.findPersonProjectByProjectIdentifier(personProjectIdentifier);
+    }
+
+    @Override
+    public Iterable<PersonProject> findAllPersonProject() {
+        return personProjectRepository.findAll();
+    }
+
+    @Override
+    public void deletPersonProjectByProjectIdentifier(String personProjectId) {
+
+        PersonProject personProject = personProjectRepository.findPersonProjectByProjectIdentifier(personProjectId);
+        if(personProject == null){
+            throw new PersonProjectIdException("Project with id : "+personProjectId+" not found");
+        }
+        personProjectRepository.delete(personProject);
     }
 }
